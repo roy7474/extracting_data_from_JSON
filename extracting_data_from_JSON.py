@@ -48,18 +48,22 @@ The data consists of a number of names and comment counts in JSON as follows:
   ]
 }
 
-
     '''
 import json
 import urllib.request
 
-url = 'http://py4e-data.dr-chuck.net/comments_42.json' 
+url = input('Enter location:')
+# url = 'http://py4e-data.dr-chuck.net/comments_42.json' 
 
 data = urllib.request.urlopen(url).read().decode()
 info = json.loads(data)
 
+print('Retrieving', url)
+print('Retrieved', len(data), 'characters')
 comment_count = 0
+
 for comment in info['comments']:
     comment_count += comment['count']
+
 print('Count:', len(info['comments']))
 print('Sum:', comment_count)
